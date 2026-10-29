@@ -1,0 +1,16 @@
+name: quarto
+on: push
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
+      - run: pip install nbclient ipykernel matplotlib open-atmos-jupyter-utils PyMPDATA
+      - run: sudo apt-get install librsvg2-bin
+      - run: quarto render lab1.ipynb --to pdf --execute
+      - uses: actions/upload-artifact@v7
+        with:
+          path: lab1.pdf 
