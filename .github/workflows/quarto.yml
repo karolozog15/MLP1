@@ -13,4 +13,4 @@ jobs:
       - run: quarto render lab1.ipynb --to pdf --execute
       - uses: actions/upload-artifact@v7
         with:
-          path: lab1.pdf 
+          path: lab1.pdf  
